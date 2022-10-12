@@ -14,23 +14,17 @@ public:
 		long long result = 0;
 		for (int i=0; i<relations.size(); i++)
 		{
-			set_salary(relations, i);
-		}
-		for (int i=0; i<relations.size(); i++)
-		{
-			cout<<dp[i]<<endl;
-			result += dp[i];
+			result += set_salary(relations, i);
 		}
 		return result;
 	}
-	void	set_salary(vector<string> relations, int index)
+	long long	set_salary(vector<string> relations, int index)
 	{
 		if (relations[index].find("Y") == string::npos)
 		{
-			dp[index] = 1;
-			return ;
+			return dp[index] = 1;
 		}
-		int salary = 0;
+		long long salary = 0;
 		for (int i=0; i<relations.size(); i++)
 		{
 			if (relations[index][i] == 'Y')
@@ -42,7 +36,7 @@ public:
 				salary += dp[i];
 			}
 		}
-		dp[index] = salary;
+		return dp[index] = salary;
 	}
 };
 
@@ -50,9 +44,11 @@ int main(void)
 {
 	CorporationSalary cs;
 	vector<string> relations;
-	relations.push_back("NNNN");
-	relations.push_back("NNNN");
-	relations.push_back("NNNN");
-	relations.push_back("NNNN");
+	relations.push_back("NNNNNN");
+	relations.push_back("YNYNNY");
+	relations.push_back("YNNNNY");
+	relations.push_back("NNNNNN");
+	relations.push_back("YNYNNN");
+	relations.push_back("YNNYNN");
 	cout<<cs.totalSalary(relations)<<endl;
 }

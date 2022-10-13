@@ -8,35 +8,20 @@ public:
 	int getMaximum(int numRed, int numBlue, int onlyRed, int onlyBlue, int bothColors)
 	{
 		int total = 0;
-		if (bothColors * 2> onlyRed + onlyBlue)
+		if (bothColors * 2 > onlyRed + onlyBlue)
 		{
 			int cnt = min(numRed, numBlue);
 			total = cnt * bothColors * 2;
 			numRed -= cnt;
 			numBlue -= cnt;
 			if (numRed == 0)
-			{
-				if (onlyBlue > 0)
-				{
-					total += onlyBlue * numBlue;
-				}
-			} else
-			{
-				if (onlyRed > 0)
-				{
-					total += onlyRed * numRed;
-				}
-			}
+				total += onlyBlue * numBlue;
+			else
+				total += onlyRed * numRed;
 		} else
 		{
-			if (onlyRed > 0)
-			{
-				total += numRed * onlyRed;
-			}
-			if (onlyBlue > 0)
-			{
-				total += numBlue * onlyBlue;
-			}
+			total += numRed * onlyRed;
+			total += numBlue * onlyBlue;
 		}
 		return total;
 	}
@@ -45,5 +30,5 @@ public:
 int main(void)
 {
 	ColorfuleBoxesAndBalls cbab;
-	cout<<cbab.getMaximum(5, 5, 464, 464, 464)<<endl;
+	cout<<cbab.getMaximum(2, 3, 100, 400, 200)<<endl;
 }
